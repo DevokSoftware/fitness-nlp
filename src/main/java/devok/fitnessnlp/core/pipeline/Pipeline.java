@@ -1,25 +1,26 @@
-package devok.fitnessnlp.config;
+package devok.fitnessnlp.core.pipeline;
 
 import java.util.Properties;
 
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
-public class StanfordCoreNLPConfig {
+public class Pipeline {
     private static final Properties properties;
     private static StanfordCoreNLP stanfordCoreNLP;
 
-    private StanfordCoreNLPConfig() {
+    private Pipeline() {
     }
 
     static {
         properties = new Properties();
-        String propertiesName = "tokenize";
+        String propertiesName = "tokenize, ssplit, pos, lemma, ner";
         properties.setProperty("annotators", propertiesName);
         properties.setProperty("tokenize.language", "en");
         properties.setProperty("tokenize.whitespace", "true");
+        properties.setProperty("ner.combinationMode", "HIGH_RECALL");
     }
 
-    public static StanfordCoreNLP getConfig() {
+    public static StanfordCoreNLP getPipeline() {
         if (stanfordCoreNLP == null) {
             stanfordCoreNLP = new StanfordCoreNLP(properties);
         }
