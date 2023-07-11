@@ -265,3 +265,42 @@ back    BODY_PART
 pain    EXERCISE_TYPE
 ?   0
 
+How 0
+can 0
+I   0
+incorporate WORKOUT_TYPE
+resistance  EQUIPMENT
+bands   EQUIPMENT
+into    0
+my  0
+workout WORKOUT_PLAN_REQUEST
+routine WORKOUT_PLAN_REQUEST
+?   0
+
+I   0
+want    0
+to  0
+build   WORKOUT_TYPE
+strength    WORKOUT_TYPE
+in  0
+my  0
+legs    BODY_PART
+.   0
+What    0
+exercises   MULTIPLE_EXERCISE_REQUEST
+should  0
+I   0
+focus   0
+on  0
+?   0
+
+What    0
+is  0
+the 0
+recommended 0
+warm-up WORKOUT_TYPE
+routine WORKOUT_TYPE
+before  0
+a   0
+workout 0
+?   0

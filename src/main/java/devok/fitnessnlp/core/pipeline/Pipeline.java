@@ -2,11 +2,15 @@ package devok.fitnessnlp.core.pipeline;
 
 import java.util.Properties;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
+
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
+@Service
 public class Pipeline {
     private static final Properties properties;
-    private static StanfordCoreNLP stanfordCoreNLP;
+    private StanfordCoreNLP stanfordCoreNLP;
 
     private Pipeline() {
     }
@@ -18,9 +22,11 @@ public class Pipeline {
         properties.setProperty("tokenize.language", "en");
         properties.setProperty("tokenize.whitespace", "true");
         properties.setProperty("ner.combinationMode", "HIGH_RECALL");
+        properties.setProperty("ner.model", "./ner-model.ser.gz");
     }
 
-    public static StanfordCoreNLP getPipeline() {
+    @Bean(name = "stanfordCoreNLP")
+    public StanfordCoreNLP getPipeline() {
         if (stanfordCoreNLP == null) {
             stanfordCoreNLP = new StanfordCoreNLP(properties);
         }

@@ -7,8 +7,7 @@ import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.sequences.SeqClassifierFlags;
 import edu.stanford.nlp.util.StringUtils;
 
-public class TrainingConfiguration {
-
+public class TrainingModel {
     public static void main(String[] args) {
         // Create the training configuration properties
         Properties props = StringUtils.propFileToProperties("config.properties");
@@ -21,16 +20,5 @@ public class TrainingConfiguration {
         // Train the NER model
         classifier.train();
         classifier.serializeClassifier("./ner-model.ser.gz");
-
-        String[] tests = new String[] {"Give me a workout plan for biceps and chest please"};
-        for (String item : tests) {
-            doTagging(classifier, item);
-        }
-    }
-
-
-    public static void doTagging(CRFClassifier model, String input) {
-        input = input.trim();
-        System.out.println(input + "=>"  +  model.classifyToString(input));
     }
 }
