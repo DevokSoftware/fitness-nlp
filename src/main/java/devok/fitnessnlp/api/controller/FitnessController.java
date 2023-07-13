@@ -1,5 +1,7 @@
 package devok.fitnessnlp.api.controller;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +20,11 @@ public class FitnessController {
         this.fitnessService = fitnessService;
     }
 
-    @GetMapping("/tags")
-    public ResponseEntity<String> getRequestWithTags(@RequestParam("request") String request) {
+    @GetMapping("/request")
+    public ResponseEntity<String> processRequest(@RequestParam("request") String request) {
         if (StringUtils.isEmpty(request)) {
             new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(fitnessService.getRequestWithTags(request), HttpStatus.OK);
+        return new ResponseEntity<>(fitnessService.processRequest(request), HttpStatus.OK);
     }
 }
